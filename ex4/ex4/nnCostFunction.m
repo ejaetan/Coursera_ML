@@ -79,7 +79,6 @@ a3 = sigmoid(z3);	% 5000 x 10
 % create a logical vector for y for all training examples
 yv = [1:num_labels] == y;	% 5000 x 10
 
-
 % Another method for generating the y matrix, this time looping over the labels:
 %y_matrix = [];   % create a null matrix
 %for i = 1:num_labels
@@ -87,7 +86,6 @@ yv = [1:num_labels] == y;	% 5000 x 10
 %end
 
 % Implement cost function
-% uses .* because each y(i) is correspond to a3(i)
 J = (-1/m) * sum(sum(yv .* log(a3) + (1-yv) .* log(1-a3)));
 
 
@@ -103,6 +101,7 @@ J = J + reg;
 for t = 1:m
 	
 	% set each layer's value to t-th training example and turned them into vector
+	% processes one example at a time
 	aOne = a1(t,:)';	% 401 x 1
 	aTwo = a2(t,:)';	% 26 x 1 
 	aThree = a3(t,:)';	% 10 x 1
